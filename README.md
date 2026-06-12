@@ -77,49 +77,49 @@ npm run prod
 src/
 ├── auth/
 │   ├── decorators/
-│   │   └── roles.decorator.ts             # @Roles()
+│   │   └── roles.decorator.ts             
 │   ├── dto/
 │   │   ├── login.dto.ts
 │   │   └── register.dto.ts
 │   ├── guards/
-│   │   ├── jwt-auth.guard.ts              # JwtAuthGuard
-│   │   └── roles.guard.ts                 # RolesGuard
+│   │   ├── jwt-auth.guard.ts              
+│   │   └── roles.guard.ts                
 │   ├── strategies/
-│   │   └── jwt.strategy.ts                # JwtStrategy
+│   │   └── jwt.strategy.ts                
 │   ├── auth.controller.ts
 │   ├── auth.module.ts
 │   └── auth.service.ts
 ├── tasks/
 │   ├── dto/
 │   │   ├── create-task.dto.ts
-│   │   └── update-task.dto.ts             # PartialType(CreateTaskDto)
+│   │   └── update-task.dto.ts           
 │   ├── interfaces/
-│   │   └── tasks.interface.ts             # ITask, ITaskWithUser, ITasksRepository
+│   │   └── tasks.interface.ts            
 │   ├── tasks.controller.ts
 │   ├── tasks.module.ts
-│   ├── tasks.repository.ts                # TasksRepository
+│   ├── tasks.repository.ts               
 │   └── tasks.service.ts
 ├── users/
 │   ├── dto/
 │   │   ├── create-user.dto.ts
-│   │   └── update-user.dto.ts             # PartialType(CreateUserDto)
+│   │   └── update-user.dto.ts            
 │   ├── interfaces/
-│   │   └── users.interface.ts             # IUser, UserPublic, IUserWithTasks, IUsersRepository
+│   │   └── users.interface.ts           
 │   ├── users.controller.ts
 │   ├── users.module.ts
-│   ├── users.repository.ts                # UsersRepository
+│   ├── users.repository.ts                
 │   └── users.service.ts
 ├── prisma/
 │   ├── prisma.module.ts
 │   └── prisma.service.ts
 ├── common/
 │   ├── constants/
-│   │   └── injection-tokens.ts            # USERS_REPOSITORY, TASKS_REPOSITORY
+│   │   └── injection-tokens.ts            
 │   ├── filters/
-│   │   └── http-exception.filter.ts       # Глобальный фильтр исключений
+│   │   └── http-exception.filter.ts       
 │   └── interceptors/
-│       ├── response-transform.interceptor.ts  # Единый формат ответов
-│       └── request-timing.interceptor.ts      # Замер времени запросов
+│       ├── response-transform.interceptor.ts  
+│       └── request-timing.interceptor.ts      
 ├── app.module.ts
 └── main.ts
 prisma/
