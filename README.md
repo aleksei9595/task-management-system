@@ -1,4 +1,4 @@
-# Task Management System API
+# Task Management System
 
 Backend приложение на NestJS для управления задачами с аутентификацией, авторизацией и системой ролей.
 
@@ -30,30 +30,18 @@ JWT_SECRET="secret-jwt-key"
 PORT=3000
 ```
 
-### 3. Запуск приложения
-
-Миграции и Prisma Client применяются автоматически при запуске — отдельно запускать не нужно.
+### 3. Применение миграций
 
 ```bash
-# Разработка (migrate dev + watch)
-npm run start:dev
-
-# Продакшн (migrate deploy + сборка + запуск)
-npm run prod
+npx prisma migrate dev
 ```
 
-> `npm install` автоматически запускает `prisma generate` через `postinstall`-скрипт.
-> Каждый старт автоматически применяет новые миграции перед запуском сервера.
+### 4. Запуск приложения в режиме разработки
 
-#### Все доступные скрипты запуска
-
-| Скрипт | Миграция | Описание |
-|---|---|---|
-| `npm run start:dev` | `migrate dev` | Разработка с hot-reload |
-| `npm run start:debug` | `migrate dev` | Отладка с hot-reload |
-| `npm run start` | `migrate deploy` | Запуск без пересборки |
-| `npm run start:prod` | `migrate deploy` | Продакшн (dist уже собран) |
-| `npm run prod` | `migrate deploy` | Продакшн с нуля: сборка + запуск |
+```bash
+npm run start:dev
+```
+После запуска приложения в режиме разработки, оно будет доступно по адресу ```http://localhost:3000```
 
 ---
 
@@ -75,44 +63,44 @@ npm run prod
 
 ```
 src/
-├── auth/
+├── auth/                                  # Модуль аутентификации и авторизации
 │   ├── decorators/
-│   │   └── roles.decorator.ts             
+│   │   └── roles.decorator.ts            
 │   ├── dto/
 │   │   ├── login.dto.ts
 │   │   └── register.dto.ts
 │   ├── guards/
 │   │   ├── jwt-auth.guard.ts              
-│   │   └── roles.guard.ts                
+│   │   └── roles.guard.ts                 
 │   ├── strategies/
 │   │   └── jwt.strategy.ts                
 │   ├── auth.controller.ts
 │   ├── auth.module.ts
 │   └── auth.service.ts
-├── tasks/
+├── tasks/                                 # Модуль управления задачами
 │   ├── dto/
 │   │   ├── create-task.dto.ts
-│   │   └── update-task.dto.ts           
+│   │   └── update-task.dto.ts             
 │   ├── interfaces/
-│   │   └── tasks.interface.ts            
+│   │   └── tasks.interface.ts             
 │   ├── tasks.controller.ts
 │   ├── tasks.module.ts
-│   ├── tasks.repository.ts               
+│   ├── tasks.repository.ts                
 │   └── tasks.service.ts
-├── users/
+├── users/                                 # Модуль управления пользователями
 │   ├── dto/
 │   │   ├── create-user.dto.ts
-│   │   └── update-user.dto.ts            
+│   │   └── update-user.dto.ts             
 │   ├── interfaces/
-│   │   └── users.interface.ts           
+│   │   └── users.interface.ts            
 │   ├── users.controller.ts
 │   ├── users.module.ts
-│   ├── users.repository.ts                
+│   ├── users.repository.ts               
 │   └── users.service.ts
-├── prisma/
+├── prisma/                                # Глобальный модуль для работы с БД
 │   ├── prisma.module.ts
 │   └── prisma.service.ts
-├── common/
+├── common/                                # Общие компоненты приложения
 │   ├── constants/
 │   │   └── injection-tokens.ts            
 │   ├── filters/
@@ -120,8 +108,8 @@ src/
 │   └── interceptors/
 │       ├── response-transform.interceptor.ts  
 │       └── request-timing.interceptor.ts      
-├── app.module.ts
-└── main.ts
+├── app.module.ts                          
+└── main.ts                                
 prisma/
 ├── schema.prisma
 ├── prisma.config.ts
@@ -132,8 +120,7 @@ prisma/
         └── migration.sql
 ```
 
----
-
 ## Логирование
 
-Все ошибки и важные события логируются в консоль с помощью NestJS Logger.
+Используется встроенный `Logger` из NestJS. Логируются ключевые бизнес-события, все ошибки приложения и время выполнения каждого HTTP-запроса.
+
