@@ -25,8 +25,9 @@ npm install
 Создайте файл `.env` в корне проекта:
 
 ```env
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/task_management?schema=public"
+DATABASE_URL="postgresql://postgres:1234@localhost:5432/task_management?schema=public"
 JWT_SECRET="secret-jwt-key"
+JWT_EXPIRES_IN="7d"
 PORT=3000
 ```
 
